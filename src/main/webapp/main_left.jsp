@@ -12,7 +12,7 @@
             <!--右上角头像、昵称、与职位 需要与数据库交互-->
             <li class="nav-header">
                 <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" style="width: 80px;height: 80px" src="js/meituanui/img/${logUser.header}" />
+                            <img alt="image" class="img-circle" style="width: 80px;height: 80px" src="js/meituanui/img/landing/avatar5.jpg" />
                              </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">昵称：${logUser.loginName}</strong></span>
@@ -22,46 +22,53 @@
                     选项
                 </div>
             </li>
-            <!--考试管理-->
-            <li id="1" class="${param.id eq 1 ? 'active':''}">
-                <a href="#"><i class="fa  fa-th-large"></i> <span class="nav-label">考试管理</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a href="views/query_item/query.jsp?id=1">xx</a></li>
-                    <li><a href="Administrator/query.do">x</a></li>
-                </ul>
-            </li>
             <!--试题新增-->
-            <li id="2" class="${param.id eq 2 ? 'active':''}">
+            <li id="1" class="${param.id eq 1 ? 'active':''}">
                 <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">试题新增</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="product/query.do?id=2" >xx</a></li>
-                    <li><a href="product/toAdd.do">xx</a></li>
-                    <li><a href="product/fix.do">xx</a></li>
+                    <li><a href="xxxx?id=1" >新增单选题</a></li>
+                    <li><a href="xxxx?id=1">新增多选题</a></li>
+                    <li><a href="xxxx?id=1">新增判断题</a></li>
+                    <li><a href="xxxx?id=1">新增简答题</a></li>
+                    <li><a href="xxxx?id=1">新增编程题</a></li>
                 </ul>
             </li>
-
             <!--试题查询-->
-            <li id="3" class="${param.id eq 3 ? 'active':''}">
+            <li id="2" class="${param.id eq 2 ? 'active':''}">
                 <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">试题查询</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="product/query.do?id=2" >xx</a></li>
-                    <li><a href="product/toAdd.do">xx</a></li>
-                    <li><a href="product/fix.do">xx</a></li>
+                    <li><a href="xxxx?id=2" >单选题查询</a></li>
+                    <li><a href="xxxx?id=2">多选题查询</a></li>
+                    <li><a href="xxxx?id=2">判断题查询</a></li>
+                    <li><a href="xxxx?id=2">简答题查询</a></li>
+                    <li><a href="xxxx?id=2">编程题查询</a></li>
+                </ul>
+            </li>
+            <!--用户管理-->
+            <li id="3" class="${param.id eq 3 ? 'active':''}">
+                <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="xxxx?id=3">批量导入用户</a></li>
+                    <li><a href="xxxx?id=3">批量操作用户</a></li>
+                    <li><a href="xxxx?id=3">修改用户信息</a></li>
                 </ul>
             </li>
             <!--分类管理-->
             <li id="4" class="${param.id eq 4 ? 'active':''}">
                 <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">分类管理</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="chose/list.do?page=1&id=3">xxx</a></li>
-                    <li><a href="list/addForm.do?id=3">xxx</a></li>
+                    <li><a href="xxxx?id=4">课程名</a></li>
+                    <li><a href="xxxx?id=4">知识点</a></li>
                 </ul>
             </li>
-            <!--订单详情-->
+            <!--考试管理-->
             <li id="5" class="${param.id eq 5 ? 'active':''}">
-                <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
+                <a href="#"><i class="fa  fa-th-large"></i> <span class="nav-label">考试管理</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="order/querys.do?id=4">xxx</a></li>
+                    <li><a href="xxxx?id=5">考试</a></li>
+                    <li><a href="xxxx?id=5">主观题阅卷</a></li>
+                    <li><a href="xxxx?id=5">查看成绩</a></li>
+                    <li><a href="xxxx?id=5">考卷维护</a></li>
                 </ul>
             </li>
         </ul>
