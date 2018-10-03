@@ -5,6 +5,6 @@ package com.lanqiao.service;
  */
 public class Hhh {
     public static void main(String agrs[]) {
-
+        System.out.println("ddd");
     }
 }
