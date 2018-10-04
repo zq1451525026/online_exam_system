@@ -13,7 +13,7 @@
     <!--顶部导航条-->
     <ul class="nav navbar-top-links navbar-right">
         <li>
-            <span class="m-r-sm text-muted welcome-message">欢迎来到贵美后台管理系统</span>
+            <span class="m-r-sm text-muted welcome-message">欢迎来到蓝桥在线考试系统</span>
         </li>
         <!--emal图标内容-->
         <li class="dropdown">

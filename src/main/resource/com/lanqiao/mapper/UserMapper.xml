@@ -3,24 +3,36 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanqiao.mapper.UserMapper">
-
-    <resultMap id="baseUserResult" type="UsersInfo">
-        <id property="userId" column="USER_ID"/>
-        <id property="userName" column="USER_NAME"/>
-        <id property="password" column="PASSWORD"/>
-        <id property="tel" column="TEL"/>
+    <resultMap id="baseUserResult" type="Olts_users">
+        <id property="id" column="ID"/>
+        <id property="stu_no" column="STU_NO"/>
+        <id property="id_card_no" column="ID_CARD_NO"/>
+        <id property="user_name" column="USER_NAME"/>
+        <id property="pass_word" column="PASS_WORD"/>
+        <id property="mobile" column="MOBILE"/>
+        <id property="home_tel" column="HOME_TEL"/>
+        <id property="home_addr" column="HOME_ADDR"/>
+        <id property="sch_addr" column="SCH_ADDR"/>
+        <id property="qq" column="QQ"/>
         <id property="email" column="EMAIL"/>
-
+        <id property="user_type" column="USER_TYPE"/>
+        <id property="gender" column="GENDER"/>
+        <id property="birthday" column="BIRTHDAY"/>
+        <id property="nation_place" column="NATION_PLACE"/>
+        <id property="marjor" column="MARJOR"/>
+        <id property="edu_Background" column="EDU_BACKGROUND"/>
+        <id property="graduate_School" column="GRADUATE_SCHOOL"/>
     </resultMap>
-    <select id="selectByLogin" resultMap="baseUserResult" parameterType="UsersInfo">
-        SELECT * FROM USERSINFO WHERE USER_NAME = #{userName} AND PASSWORD = #{password}
+
+    <select id="selectByLogin" resultMap="baseUserResult" parameterType="Olts_users">
+        SELECT * FROM OLTS_USERS WHERE USER_NAME = #{user_name} AND PASS_WORD = #{pass_word}
     </select>
 
-    <insert id="insertUser" parameterType="UsersInfo">
-        <selectKey keyProperty="userId" resultType="int" order="BEFORE">
+    <insert id="insertUser" parameterType="Olts_users">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
             SELECT USERSINFO_SEQ.nextval FROM dual
         </selectKey>
-        INSERT INTO USERSINFO VALUES (#{userId},#{userName},#{password},#{tel,jdbcType=CHAR},#{email,jdbcType=VARCHAR})
+        INSERT INTO USERSINFO(id,stu_no,id_card_no,user_name,pass_word) VALUES (#{id},#{stu_no,jdbcType=CHAR},#{id_card_no},#{user_name},#{pass_word})
     </insert>
 
 
