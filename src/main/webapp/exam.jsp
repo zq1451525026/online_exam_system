@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>贵美后台管理系统</title>
+    <title>蓝桥在线考试系统</title>
     <base href="${pageContext.request.contextPath}/">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,10 +16,40 @@
 <body>
 
     <div id="wrapper">
-
-        <%--此处包含左侧--%>
-        <%@include file="main_left.jsp"%>
-
+        <%--
+          Created by IntelliJ IDEA.
+          User: Administrator
+          Date: 2018/9/3
+          Time: 0:55
+          To change this template use File | Settings | File Templates.
+        --%>
+        <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <!--右上角头像、昵称、与职位 需要与数据库交互-->
+                    <li class="nav-header">
+                        <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" style="width: 80px;height: 80px" src="js/meituanui/img/logo.jpg" />
+                             </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">昵称：${logUser.user_name}</strong></span>
+                            <span class="text-muted text-xs block">职位：学生</span> </span> </a>
+                        </div>
+                        <div class="logo-element">
+                            选项
+                        </div>
+                    </li>
+                    <!--考试-->
+                    <li id="1" class="${param.id eq 1 ? 'active':''}">
+                        <a href="#"><i class="fa  fa-th-large"></i> <span class="nav-label">考试</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="views/query_item/query.jsp?id=1">xx</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div id="page-wrapper" class="gray-bg">
         <div class="row border-bottom">
             <%--此处包含头部信息--%>

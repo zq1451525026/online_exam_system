@@ -12,11 +12,11 @@
             <!--右上角头像、昵称、与职位 需要与数据库交互-->
             <li class="nav-header">
                 <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" style="width: 80px;height: 80px" src="js/meituanui/img/landing/avatar5.jpg" />
+                            <img alt="image" class="img-circle" style="width: 80px;height: 80px" src="js/meituanui/img/logo.jpg" />
                              </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">昵称：${logUser.loginName}</strong></span>
-                            <span class="text-muted text-xs block">职位：${logUser.position}</span> </span> </a>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">昵称：${logUser.user_name}</strong></span>
+                            <span class="text-muted text-xs block">职位：${logUser.user_type}</span> </span> </a>
                 </div>
                 <div class="logo-element">
                     选项

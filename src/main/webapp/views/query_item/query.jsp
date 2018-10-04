@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -76,18 +76,18 @@
                 <div class="input-group">
                   <div class="input-group-addon">大分类</div>
                   <%--<input type="text" class="form-control" id="big_ctgr" name="big_ctgr" placeholder="请输入大分类">--%>
-                    <select name="big_ctgr" id="big_ctgr" class="form-control">
-                      <option value="">------全选------</option>
-                        <optiongroup >
-                        <%--<%
-                            List<Ctgr> ctgrs = new CtgrDao().findAll();
-                            for (Ctgr ctgr : ctgrs) {
-                        %>
-                        <option value="<%=ctgr.getBig_name()%>"><%=ctgr.getBig_name()%></option>
-                        <%
-                            }
-                        %>--%></optiongroup>
-                    </select>
+                  <select name="big_ctgr" id="big_ctgr" class="form-control">
+                    <option value="">------全选------</option>
+                    <optiongroup >
+                      <%--<%
+                          List<Ctgr> ctgrs = new CtgrDao().findAll();
+                          for (Ctgr ctgr : ctgrs) {
+                      %>
+                      <option value="<%=ctgr.getBig_name()%>"><%=ctgr.getBig_name()%></option>
+                      <%
+                          }
+                      %>--%></optiongroup>
+                  </select>
                 </div>
               </div>
               <br>
@@ -98,77 +98,77 @@
             </form>
             <%-------------------------------%>
             <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h3 class="panel-title text-left"><span class="fa fa-bar-chart-o"></span>  &nbsp;商品分类列表</h3>
-                </div>
-                <div class="panel-body">
-                     <table class="table table-striped"  id="head">
-                          <thead>
-                          <br>
-                          <tr style="text-align: center">
-                            <th class="text-center">序号</th>
-                            <th class="text-center">ID</th>
-                            <th class="text-center">小分类</th>
-                            <th class="text-center">大分类</th>
-                            <th class="text-center">基本操作</th>
-                          </tr>
-              </thead>
-              <tbody>
-              <% int i = 1;%>
-              <c:forEach var="cat" items="${categories}">
-                <tr style="text-align: center" id="tr_${cat.ctgr_id}">
-                  <td>
-                    <%
-                      String pageNo = request.getParameter("pageNo");
-                      Integer page1;
-                      if (pageNo == null) {
-                        page1 = 1;
-                      } else {
-                          page1 = Integer.valueOf(pageNo);
-                      }
-                      /*out.print(6*(page1-1)+i);*/
-                      i++;
-                    %>
-                  </td>
-                  <td>${cat.ctgr_id}</td>
-                  <td>${cat.ctgr_name}</td>
-                  <td>${cat.big_ctgr}</td>
-                  <td>
-                    <a id="toUpdateBtn" ctgr_id="${cat.ctgr_id}"  onclick="toUpdate(this)" href="#" class="btn btn-info btn-sm"
-                       data-toggle="modal" data-target="#myModal" data-backdrop="static">
-                      <span class="glyphicon glyphicon-refresh"></span> 更新</a>
-
-
-                    <a id="todeletebtn" ctgr_id="${cat.ctgr_id}"  onclick="todelete(this)"  href="#" class="btn btn-danger btn-sm"
-                       data-toggle="modal" data-target="#deleteModal" data-backdrop="static">
-                      <span class="glyphicon glyphicon-trash"></span>删除</a>
-
-                  </td>
-                </tr>
-              </c:forEach>
-
-
-              <tr>
-                <td colspan="5" style="text-align: center">
+              <div class="panel-heading">
+                <h3 class="panel-title text-left"><span class="fa fa-bar-chart-o"></span>  &nbsp;商品分类列表</h3>
+              </div>
+              <div class="panel-body">
+                <table class="table table-striped"  id="head">
+                  <thead>
                   <br>
-                  <c:if test="${not page1.first}">
-                    <a href="chose/page.do?pageNo=1">第一页</a>&nbsp;&nbsp;
-                  </c:if>
-                  <c:if test="${page1.pageNo gt 1}">
-                    <a href="chose/page.do?pageNo=${page1.pageNo-1}">上一页</a>&nbsp;&nbsp;
-                  </c:if>
-                  <c:if test="${page1.pageNo lt page1.totalPage}">
-                    <a href="chose/page.do?pageNo=${page1.pageNo+1}">下一页</a>&nbsp;&nbsp;
-                  </c:if>
-                  <c:if test="${not page1.last}">
-                    <a href="chose/page.do?pageNo=${page1.totalPage}">最后一页</a>
-                  </c:if>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <font color="#347AB7">当前第${page1.pageNo}页，共${page1.totalPage}页</font>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-            <br><br><br>
+                  <tr style="text-align: center">
+                    <th class="text-center">序号</th>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">小分类</th>
+                    <th class="text-center">大分类</th>
+                    <th class="text-center">基本操作</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% int i = 1;%>
+                  <c:forEach var="cat" items="${categories}">
+                    <tr style="text-align: center" id="tr_${cat.ctgr_id}">
+                      <td>
+                        <%
+                          String pageNo = request.getParameter("pageNo");
+                          Integer page1;
+                          if (pageNo == null) {
+                            page1 = 1;
+                          } else {
+                            page1 = Integer.valueOf(pageNo);
+                          }
+                      /*out.print(6*(page1-1)+i);*/
+                          i++;
+                        %>
+                      </td>
+                      <td>${cat.ctgr_id}</td>
+                      <td>${cat.ctgr_name}</td>
+                      <td>${cat.big_ctgr}</td>
+                      <td>
+                        <a id="toUpdateBtn" ctgr_id="${cat.ctgr_id}"  onclick="toUpdate(this)" href="#" class="btn btn-info btn-sm"
+                           data-toggle="modal" data-target="#myModal" data-backdrop="static">
+                          <span class="glyphicon glyphicon-refresh"></span> 更新</a>
+
+
+                        <a id="todeletebtn" ctgr_id="${cat.ctgr_id}"  onclick="todelete(this)"  href="#" class="btn btn-danger btn-sm"
+                           data-toggle="modal" data-target="#deleteModal" data-backdrop="static">
+                          <span class="glyphicon glyphicon-trash"></span>删除</a>
+
+                      </td>
+                    </tr>
+                  </c:forEach>
+
+
+                  <tr>
+                    <td colspan="5" style="text-align: center">
+                      <br>
+                      <c:if test="${not page1.first}">
+                        <a href="chose/page.do?pageNo=1">第一页</a>&nbsp;&nbsp;
+                      </c:if>
+                      <c:if test="${page1.pageNo gt 1}">
+                        <a href="chose/page.do?pageNo=${page1.pageNo-1}">上一页</a>&nbsp;&nbsp;
+                      </c:if>
+                      <c:if test="${page1.pageNo lt page1.totalPage}">
+                        <a href="chose/page.do?pageNo=${page1.pageNo+1}">下一页</a>&nbsp;&nbsp;
+                      </c:if>
+                      <c:if test="${not page1.last}">
+                        <a href="chose/page.do?pageNo=${page1.totalPage}">最后一页</a>
+                      </c:if>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <font color="#347AB7">当前第${page1.pageNo}页，共${page1.totalPage}页</font>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <br><br><br>
               </div>
             </div>
           </div>
