@@ -1,6 +1,6 @@
 package com.lanqiao.service;
 
-import com.lanqiao.vo.UsersInfo;
+import com.lanqiao.vo.Olts_users;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,13 +19,13 @@ public class MapperTest {
     private IUserService userService;
     @Test
     public void loginTest() throws Exception {
-        UsersInfo usersInfo = userService.selectByLogin(new UsersInfo(null, "manager", "manager",null,null));
-        System.out.println(usersInfo);
+        Olts_users oltsusers = userService.selectByLogin(new Olts_users("烧脑分队", "brain"));
+        System.out.println(oltsusers);
     }
 
     /** 添加新用户测试*/
     @Test
     public void insertUser() throws Exception {
-        boolean b = userService.insertUser(new UsersInfo(null,"w12","11k1",null,null));
+        boolean b = userService.insertUser(new Olts_users("milk","milk"));
     }
 }

@@ -5,7 +5,7 @@
 <head>
 
   <%@include file="../../common.jsp"%>
-  <title>贵美后台管理系统</title>
+  <title>蓝桥在线考试系统</title>
 </head>
 
 <body>

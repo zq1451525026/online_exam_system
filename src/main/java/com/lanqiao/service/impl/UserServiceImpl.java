@@ -2,7 +2,7 @@ package com.lanqiao.service.impl;
 
 import com.lanqiao.mapper.UserMapper;
 import com.lanqiao.service.IUserService;
-import com.lanqiao.vo.UsersInfo;
+import com.lanqiao.vo.Olts_users;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,12 +16,12 @@ public class UserServiceImpl implements IUserService {
     @Resource
     private UserMapper userMapper;
     @Override
-    public UsersInfo selectByLogin(UsersInfo user) {
+    public Olts_users selectByLogin(Olts_users user) {
         return userMapper.selectByLogin(user);
     }
 
     @Override
-    public boolean insertUser(UsersInfo user) {
+    public boolean insertUser(Olts_users user) {
         return userMapper.insertUser(user);
     }
 }

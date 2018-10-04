@@ -12,11 +12,11 @@
             <!--右上角头像、昵称、与职位 需要与数据库交互-->
             <li class="nav-header">
                 <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" style="width: 80px;height: 80px" src="js/meituanui/img/landing/avatar5.jpg" />
+                            <img alt="image" class="img-circle" style="width: 80px;height: 80px" src="js/meituanui/img/logo.jpg" />
                              </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">昵称：${logUser.loginName}</strong></span>
-                            <span class="text-muted text-xs block">职位：${logUser.position}</span> </span> </a>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">昵称：${logUser.user_name}</strong></span>
+                            <span class="text-muted text-xs block">职位：${logUser.user_type}</span> </span> </a>
                 </div>
                 <div class="logo-element">
                     选项
@@ -48,7 +48,7 @@
             <li id="3" class="${param.id eq 3 ? 'active':''}">
                 <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="views/user_manage/query.jsp?id=3">批量导入用户</a></li>
+                    <li><a href="xxxx?id=3">批量导入用户</a></li>
                     <li><a href="xxxx?id=3">批量操作用户</a></li>
                     <li><a href="xxxx?id=3">修改用户信息</a></li>
                 </ul>
