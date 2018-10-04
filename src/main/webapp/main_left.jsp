@@ -48,7 +48,7 @@
             <li id="3" class="${param.id eq 3 ? 'active':''}">
                 <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="xxxx?id=3">批量导入用户</a></li>
+                    <li><a href="views/user_manage/query.jsp?id=3">批量导入用户</a></li>
                     <li><a href="xxxx?id=3">批量操作用户</a></li>
                     <li><a href="xxxx?id=3">修改用户信息</a></li>
                 </ul>
