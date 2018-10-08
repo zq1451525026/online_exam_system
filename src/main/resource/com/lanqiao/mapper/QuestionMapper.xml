@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanqiao.mapper.QuestionMapper">
+    <resultMap id="baseResultMap" type="Smd_questions" >
+        <id property="id" column="ID"/>
+        <result property="question" column="QUESTION"/>
+        <result property="correct" column="CORRECT"/>
+        <result property="question_type" column="QUESTION_TYPE"/>
+        <result property="tech_cate_id" column="TECH_CATE_ID"/>
+        <result property="descrpt" column="DESCRPT"/>
+        <result property="pubdate" column="PUBDATE"/>
+    </resultMap>
+
+    <resultMap id="detailResultMap" type="Smd_questions">
+        <association property="options" javaType="Smd_options">
+            <id property="id" column="id"/>
+            <result property="option_A" column="option_A"/>
+            <result property="option_B" column="option_B"/>
+            <result property="option_C" column="option_C"/>
+            <result property="option_D" column="option_D"/>
+            <result property="option_E" column="option_E"/>
+        </association>
+        <association property="pd_options" javaType="Pd_options">
+            <id property="id" column="ID"/>
+            <result property="pd_option" column="PD_OPTION"/>
+        </association>
+        <association property="category" javaType="Tech_category">
+            <id property="id" column="ID"/>
+            <result property="tech_ctgr" column="TECH_CTGR"/>
+            <result property="course_id" column="COURSE_ID"/>
+            <association property="courses" javaType="Courses">
+                <id property="id" column="ID"/>
+                <result property="course_name" column="COURSE_NAME"/>
+            </association>
+
+        </association>
+        
+    </resultMap>
+
+<!--单选，多选-->
+    <insert id="insertSmd" parameterType="Smd_questions">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            SELECT SMD_QUESTIONS_SEQ.nextval FROM dual
+        </selectKey>
+        INSERT INTO SMD_QUESTIONS(id,question,correct,question_type,tech_cate_id,descrpt,pubdate)
+         VALUES (#{id},#{question},#{correct},#{question_type},#{tech_cate_id},#{descrpt,jdbcType=VARCHAR},#{pubdate,jdbcType=DATE})
+    </insert>
+
+    <!--单选，多选-->
+    <insert id="inserto" parameterType="Smd_questions">
+        INSERT INTO SMD_OPTIONS
+        VALUES (sys_guid(),#{option_A},#{option_B},#{option_C},#{option_D},#{option_E,jdbcType=VARCHAR},#{id})
+    </insert>
+
+    <!--判断-->
+    <insert id="insertSmd2" parameterType="Smd_questions">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            SELECT SMD_QUESTIONS_SEQ.nextval FROM dual
+        </selectKey>
+        INSERT INTO SMD_QUESTIONS(id,question,correct,question_type,tech_cate_id,descrpt,pubdate)
+        VALUES (#{id},#{question},#{correct},#{question_type},#{tech_cate_id},#{descrpt,jdbcType=VARCHAR},#{pubdate,jdbcType=DATE})
+    </insert>
+
+    <insert id="insertFsp" parameterType="Fsp_questions">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            SELECT FSP_QUESTIONS_SEQ.nextval FROM dual
+        </selectKey>
+        INSERT INTO FSP_QUESTIONS(id,question,std_answer,question_type,tech_cate_id,pubdate,descrpt)
+        VALUES (#{id},#{question},#{std_answer},#{question_type},#{tech_cate_id},#{pubdate,jdbcType=DATE},#{descrpt,jdbcType=VARCHAR})
+    </insert>
+
+
+    <select id="selectCourses" resultType="Courses">
+        SELECT * FROM COURSES
+    </select>
+
+    <select id="selectTech" parameterType="int" resultType="Tech_category">
+        SELECT * FROM TECH_CATEGORY WHERE COURSE_ID=#{id}
+    </select>
+
+
+</mapper>

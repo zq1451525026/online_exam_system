@@ -19,7 +19,7 @@ public class MapperTest {
     private IUserService userService;
     @Test
     public void loginTest() throws Exception {
-        Olts_users oltsusers = userService.selectByLogin(new Olts_users("烧脑分队", "brain"));
+        Olts_users oltsusers = userService.selectByLogin(new Olts_users("james", "james"));
         System.out.println(oltsusers);
     }
 

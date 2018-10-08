@@ -1,4 +1,4 @@
-package com.lanqiao.service.service.impl;
+package com.lanqiao.service.impl;
 
 import com.lanqiao.mapper.UserMapper;
 import com.lanqiao.service.IUserService;

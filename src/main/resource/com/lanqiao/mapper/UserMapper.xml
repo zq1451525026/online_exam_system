@@ -30,9 +30,9 @@
 
     <insert id="insertUser" parameterType="Olts_users">
         <selectKey keyProperty="id" resultType="int" order="BEFORE">
-            SELECT USERSINFO_SEQ.nextval FROM dual
+            SELECT olts_users_seq.nextval FROM dual
         </selectKey>
-        INSERT INTO USERSINFO(id,stu_no,id_card_no,user_name,pass_word) VALUES (#{id},#{stu_no,jdbcType=CHAR},#{id_card_no},#{user_name},#{pass_word})
+        INSERT INTO olts_users(id,user_name,pass_word) VALUES (#{id},#{user_name},#{pass_word})
     </insert>
 
 

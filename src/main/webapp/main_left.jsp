@@ -26,11 +26,11 @@
             <li id="1" class="${param.id eq 1 ? 'active':''}">
                 <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">试题新增</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="xxxx?id=1" >新增单选题</a></li>
-                    <li><a href="xxxx?id=1">新增多选题</a></li>
-                    <li><a href="xxxx?id=1">新增判断题</a></li>
-                    <li><a href="xxxx?id=1">新增简答题</a></li>
-                    <li><a href="xxxx?id=1">新增编程题</a></li>
+                    <li><a href="views/question/insert_single.jsp" >新增单选题</a></li>
+                    <li><a href="views/question/insert_mul.jsp?id=1">新增多选题</a></li>
+                    <li><a href="views/question/insert_jud.jsp?id=1">新增判断题</a></li>
+                    <li><a href="views/question/insert_simple.jsp?id=1">新增简答题</a></li>
+                    <li><a href="views/question/insert_programming.jsp?id=1">新增编程题</a></li>
                 </ul>
             </li>
             <!--试题查询-->
