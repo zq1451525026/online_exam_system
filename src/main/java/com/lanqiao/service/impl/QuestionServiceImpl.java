@@ -21,7 +21,7 @@ public class QuestionServiceImpl implements IQuestionService {
     @Override
     public int insertSmd(Smd_questions smd_questions) {
         questionMapper.insertSmd(smd_questions);
-        //questionMapper.insertpd(smd_questions);
+
 
         return this.questionMapper.inserto(smd_questions);
     }

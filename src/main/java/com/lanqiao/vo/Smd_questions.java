@@ -23,7 +23,6 @@ public class Smd_questions {
     private String descrpt;
     private Date pubdate;
 
-    private Pd_options pd_options;
     private Smd_options options;
     private Tech_category category;
 
@@ -34,8 +33,7 @@ public class Smd_questions {
     private String option_D;
     private String option_E;
 
-    //判断题
-    private String pd_option;
+
 
     public Smd_questions() {
     }
@@ -163,21 +161,6 @@ public class Smd_questions {
         this.option_E = option_E;
     }
 
-    public Pd_options getPd_options() {
-        return pd_options;
-    }
-
-    public void setPd_options(Pd_options pd_options) {
-        this.pd_options = pd_options;
-    }
-
-    public String getPd_option() {
-        return pd_option;
-    }
-
-    public void setPd_option(String pd_option) {
-        this.pd_option = pd_option;
-    }
 
     @Override
     public String toString() {

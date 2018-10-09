@@ -13,8 +13,10 @@
     <link href="js/meituanui/css/animate.css" rel="stylesheet">
     <link href="js/meituanui/css/style.css" rel="stylesheet">
 
-
     <script src="js/jquery-2.2.4.js"></script>
+
+    <link rel="stylesheet" href="js/prettify/prettify-iteye.css">
+    <script src="js/prettify/prettify.js"></script>
 
     <script language="javascript">
         $(function () {
@@ -57,6 +59,16 @@
         })
 
     </script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#addText').click(function() {
+                var fmt = '<pre id="xxx" class="prettyprint linenums lang-*">\n\n</pre>\n\n';
+                var main = document.getElementById('question');
+                main.value = main.value + fmt;
+            });
+        })
+    </script>
 </head>
 
 <body>
@@ -91,14 +103,11 @@
                         <form  action="question/insert_smd" method="post" id="mul_add">
                             <div class="col-md-8 column" style="float: left;margin:0px 0px 0px 35px">
                                 <span class="form-label"><span style="color: red">*</span>多选题题干：</span><br>
-                                <textarea name="question" class="add-question-ta" style="width: 600px;height: 100px"></textarea>
-                                <br>
-                                <textarea class="add-question-ta" style="width: 600px;height: 50px"  name="descrpt" placeholder="此处输入题干代码，可为空"></textarea>
-                                <br><button type="button"  style="width: 120px;height: 30px;" >复制代码格式</button>
+                                <textarea name="question"  id="question" class="add-question-ta" style="width: 600px;height: 150px"></textarea>
+                                <br><button type="button" id="addText" style="width: 110px;height: 30px; margin: 0px 0px 0px 480px">复制代码格式</button>
                             </div>
-                            <br><br><br>
 
-                            <div class="col-md-8 column"  style="margin:0px 0px 0px 65px">
+                            <div class="col-md-8 column"  style="margin:0px 0px 0px 65px;margin-top: 20px">
                                 <div class="row clearfix">
                                     <div class="col-md-4 column">
                                         <span style="float: left"><span style="color: red">*</span>课程：</span>

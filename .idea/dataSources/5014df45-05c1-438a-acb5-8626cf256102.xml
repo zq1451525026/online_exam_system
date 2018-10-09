@@ -91,9 +91,9 @@
     </schema>
     <schema id="31" parent="1" name="OLTS">
       <ObjectId>64</ObjectId>
-      <IntrospectionTimestamp>2018-10-08.11:22:37</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2018-10-08.22:35:27</IntrospectionTimestamp>
       <CreatedTimestamp>2018-10-03.17:25:25</CreatedTimestamp>
-      <ModifiedTimestamp>2018-10-08.11:22:22</ModifiedTimestamp>
+      <ModifiedTimestamp>2018-10-08.22:35:18</ModifiedTimestamp>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -196,7 +196,7 @@
     <table id="49" parent="31" name="SMD_QUESTIONS">
       <ObjectId>54289</ObjectId>
       <CreatedTimestamp>2018-10-03.17:29:07</CreatedTimestamp>
-      <ModifiedTimestamp>2018-10-03.17:29:07</ModifiedTimestamp>
+      <ModifiedTimestamp>2018-10-08.22:35:18</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
     <table id="50" parent="31" name="TECH_CATEGORY">
@@ -737,7 +737,7 @@
     </column>
     <column id="143" parent="49" name="CORRECT">
       <Position>3</Position>
-      <DataType>VARCHAR2(5)|0</DataType>
+      <DataType>VARCHAR2(10)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="144" parent="49" name="QUESTION_TYPE">

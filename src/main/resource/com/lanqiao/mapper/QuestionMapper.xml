@@ -22,10 +22,6 @@
             <result property="option_D" column="option_D"/>
             <result property="option_E" column="option_E"/>
         </association>
-        <association property="pd_options" javaType="Pd_options">
-            <id property="id" column="ID"/>
-            <result property="pd_option" column="PD_OPTION"/>
-        </association>
         <association property="category" javaType="Tech_category">
             <id property="id" column="ID"/>
             <result property="tech_ctgr" column="TECH_CTGR"/>
