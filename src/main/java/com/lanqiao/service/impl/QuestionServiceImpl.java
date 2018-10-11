@@ -32,6 +32,8 @@ public class QuestionServiceImpl implements IQuestionService {
     }
 
 
+
+
     @Override
     public int inserto(Smd_questions smd_questions) {
         return questionMapper.inserto(smd_questions);
@@ -52,6 +54,8 @@ public class QuestionServiceImpl implements IQuestionService {
     public int insertFsp(Fsp_questions fsp_questions) {
         return questionMapper.insertFsp(fsp_questions);
     }
+
+
 
 
 }

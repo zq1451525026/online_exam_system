@@ -23,4 +23,5 @@ public interface QuestionMapper {
 
     int inserto(Smd_questions smd_questions);
 
+
 }

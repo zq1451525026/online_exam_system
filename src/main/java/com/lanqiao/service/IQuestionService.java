@@ -20,4 +20,6 @@ public interface IQuestionService {
     List<Tech_category> selectTech(Integer id);
 
     int insertFsp(Fsp_questions fsp_questions);
+
+
 }

@@ -35,4 +35,6 @@ public class QuestionServiceTest {
         List<Tech_category> tech_categories = questionService.selectTech(1);
         System.out.println(tech_categories);
     }
+
+
 }

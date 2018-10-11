@@ -111,14 +111,14 @@
                                 </div>
                             </div>
 
-                                <div class="col-md-8 column" style="float: left;margin:0px 0px 0px 35px">
-                                    <span class="form-label"><span style="color: red">*</span>简答题题干：</span><br>
-                                    <textarea  name="question" class="add-question-ta" style="width: 600px;height: 80px"></textarea>
-                                    <br>
-                                    <span class="form-label"><span style="color: red">*</span>标准答案：</span><br>
-                                    <textarea name="std_answer" class="add-question-ta" style="width: 600px;height: 150px"></textarea>
-                                </div>
-                                <br><br>
+                            <div class="col-md-8 column" style="float: left;margin:0px 0px 0px 35px">
+                                <span class="form-label"><span style="color: red">*</span>简答题题干：</span><br>
+                                <textarea  name="question" class="add-question-ta" style="width: 600px;height: 80px"></textarea>
+                                <br>
+                                <span class="form-label"><span style="color: red">*</span>标准答案：</span><br>
+                                <textarea name="std_answer" class="add-question-ta" style="width: 600px;height: 150px"></textarea>
+                            </div>
+                            <br><br>
                             <input type="hidden" name="question_type" value="5">
                             <div style="margin: 0px 0px 0px 300px ;float: left">
                                 <button type="submit" class="btn btn-primary" style="width: 80px">保存</button>

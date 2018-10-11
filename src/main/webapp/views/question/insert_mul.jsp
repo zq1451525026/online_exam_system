@@ -63,12 +63,38 @@
     <script type="text/javascript">
         $(function() {
             $('#addText').click(function() {
-                var fmt = '<pre id="xxx" class="prettyprint linenums lang-*">\n\n</pre>\n\n';
+                var fmt = '<pre class="prettyprint linenums lang-iava" class="pretty-code">\n\n</pre>\n\n';
                 var main = document.getElementById('question');
                 main.value = main.value + fmt;
             });
         })
     </script>
+
+    <%--sweetAlert--%>
+    <script src="js/sweetalert.min.js"></script>
+    <link href="css/sweetalert.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <script type="text/javascript">
+
+         $('.delete').click(function () {
+             swal({
+                 title: "Are you sure?",
+                 text: "You will not be able to recover this imaginary file!",
+                 type: "warning",
+                 showCancelButton: true,
+                 confirmButtonColor: "#DD6B55",
+                 confirmButtonText: "Yes, delete it!",
+                 closeOnConfirm: false
+             }, function () {
+                 swal("Deleted!", "Your imaginary file has been deleted.", "success");
+             });
+         });
+    </script>
+
+
 </head>
 
 <body>

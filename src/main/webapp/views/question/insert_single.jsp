@@ -3,6 +3,8 @@
 <html>
 <head>
     <title>蓝桥在线考试系统</title>
+    <%@include file="../../common.jsp"%>
+
     <base href="${pageContext.request.contextPath}/">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,7 +64,7 @@
     <script type="text/javascript">
         $(function() {
             $('#addText').click(function() {
-                var fmt = '<pre id="xxx" class="prettyprint linenums lang-*">\n\n</pre>\n\n';
+                var fmt = '<pre class="prettyprint linenums lang-iava" class="pretty-code">\n\n</pre>\n\n';
                 var main = document.getElementById('question');
                 main.value = main.value + fmt;
             });
@@ -98,7 +100,7 @@
                         </div>
                     </div>
                         <!--主要修改页面 高度为自动  在美团后台里面扣自己想要的样式自己导入样式库-->
-                        <div class="ibox-content" style="text-align: center ;height: 800px;float: left"  >
+                        <div class="ibox-content" style="text-align: center ;height: 100%;float: left"  >
                                 <form  action="question/insert_smd" method="post" id="single_add">
                                     <div class="col-md-8 column" style="float: left;margin:0px 0px 0px 35px">
                                         <span class="form-label"><span style="color: red">*</span>单选题题干：</span><br>

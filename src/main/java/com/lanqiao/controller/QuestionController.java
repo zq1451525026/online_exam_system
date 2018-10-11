@@ -1,10 +1,7 @@
 package com.lanqiao.controller;
 
 import com.lanqiao.service.IQuestionService;
-import com.lanqiao.vo.Courses;
-import com.lanqiao.vo.Fsp_questions;
-import com.lanqiao.vo.Smd_questions;
-import com.lanqiao.vo.Tech_category;
+import com.lanqiao.vo.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,7 +57,6 @@ public class QuestionController {
 
     }
 
-
     @RequestMapping(value="/insert_fsp",method = RequestMethod.POST)
     public String insertFsp(Fsp_questions fsp_questions, HttpServletRequest request, ModelMap modelMap) {
         int i = questionService.insertFsp(fsp_questions);
@@ -74,6 +70,9 @@ public class QuestionController {
         }
 
     }
+
+
+
 
 
 }
