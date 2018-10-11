@@ -1,9 +1,11 @@
 package com.lanqiao.vo;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2018/10/4.
  */
-public class Tech_category {
+public class Tech_category implements Serializable {
     /*create table Tech_category(
             id integer not null primary key,
             tech_ctgr varchar2(100) not null,
@@ -24,6 +26,10 @@ public class Tech_category {
     }
 
     public Tech_category() {
+    }
+    public Tech_category(Integer id, String tech_ctgr) {
+        this.id = id;
+        this.tech_ctgr = tech_ctgr;
     }
 
     public Tech_category(Integer id, String tech_ctgr, Integer course_id) {

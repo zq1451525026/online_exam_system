@@ -1,9 +1,10 @@
 package com.lanqiao.vo;
 
+import java.io.Serializable;
 /**
  * Created by Administrator on 2018/10/4.
  */
-public class Courses {
+public class Courses implements Serializable {
    /* create table Courses(
             id integer not null primary key,
             course_name varchar2(20) not null

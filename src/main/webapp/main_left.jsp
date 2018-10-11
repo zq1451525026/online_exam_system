@@ -77,8 +77,8 @@
                 <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">分类管理</span><span
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="xxxx?id=4">课程名</a></li>
-                    <li><a href="xxxx?id=4">知识点</a></li>
+                    <li><a href="category/selectAllCourses">课程名</a></li>
+                    <li><a href="knowledge/selectAllKnowledge">知识点</a></li>
                 </ul>
             </li>
             <!--考试管理-->

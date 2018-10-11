@@ -3,8 +3,6 @@
 <html>
 <head>
     <title>蓝桥在线考试系统</title>
-    <%@include file="../../common.jsp"%>
-
     <base href="${pageContext.request.contextPath}/">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +12,7 @@
 
     <link href="js/meituanui/css/animate.css" rel="stylesheet">
     <link href="js/meituanui/css/style.css" rel="stylesheet">
+
     <script src="js/jquery-2.2.4.js"></script>
 
     <link rel="stylesheet" href="js/prettify/prettify-iteye.css">
@@ -70,9 +69,35 @@
             });
         })
     </script>
+
+    <%--sweetAlert--%>
+    <script src="js/sweetalert.min.js"></script>
+    <link href="css/sweetalert.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <script type="text/javascript">
+
+        $('.delete').click(function () {
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+    </script>
+
+
 </head>
 
-<body onload="prettyPrint()">
+<body>
 
 <div id="wrapper">
 
@@ -117,113 +142,116 @@
                             </a>
                         </div>
                     </div>
-                        <!--主要修改页面 高度为自动  在美团后台里面扣自己想要的样式自己导入样式库-->
-                        <div class="ibox-content" style="text-align: center ;height: 100%;float: left"  >
-                                <form  action="question/insert_smd" method="post" id="single_add">
-                                    <div class="col-md-8 column" style="float: left;margin:0px 0px 0px 35px">
-                                        <span class="form-label"><span style="color: red">*</span>单选题题干：</span><br>
-                                        <textarea name="question"  id="question" class="add-question-ta" style="width: 600px;height: 150px"></textarea>
-                                        <br><button type="button" id="addText" style="width: 110px;height: 30px; margin: 0px 0px 0px 480px">复制代码格式</button>
-                                    </div>
+                    <!--主要修改页面 高度为自动  在美团后台里面扣自己想要的样式自己导入样式库-->
+                    <div class="ibox-content" style="text-align: center ;height: 800px;float: left"  >
+                        <div class="panel panel-primary" style="height: 100%">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-left"><span class="fa fa-bar-chart-o"></span> &nbsp;新增单选
+                                </h3>
+                            </div>
+                        <form  action="question/insert_smd" method="post" id="single_add">
+                            <div class="col-md-8 column" style="float: left;margin:0px 0px 0px 150px">
+                                <br>
+                                <span class="form-label"><span style="color: red">*</span>单选题题干：</span><br>
+                                <textarea name="question"  id="question" class="add-question-ta" style="width: 600px;height: 150px"></textarea>
+                                <br><button type="button" id="addText" class="btn btn-primary" style="width: 110px;height: 30px; margin: 0px 0px 0px 480px">复制代码格式</button>
+                            </div>
 
-                                    <%---     关联      --%>
-
-                                    <div class="col-md-8 column"  style="margin:0px 0px 0px 65px;margin-top: 20px">
-                                        <div class="row clearfix">
-                                            <div class="col-md-4 column">
-                                                <span style="float: left"><span style="color: red">*</span>课程：</span>
-                                                <div style="width: 300px;height: 150px" >
-                                                    <select name="coursesId" id="courseid" class="df-input-narrow" size="4"  style="width: 300px;">
-                                                        <option value="" selected>=请选择=</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 column" style="margin:0px 0px 0px 80px" >
-                                                <span style="float: left" ><span style="color: red">*</span>知识点：</span>
-                                                <div style="width: 300px;height: 150px">
-                                                    <select name="tech_cate_id" id="techId" class="df-input-narrow" size="4"  style="width: 300px;">
-                                                        <option value="" selected>=请选择=</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                            <div class="col-md-8 column"  style="margin:0px 0px 0px 180px;margin-top: 20px">
+                                <div class="row clearfix">
+                                    <div class="col-md-4 column">
+                                        <span style="float: left"><span style="color: red">*</span>课程：</span>
+                                        <div style="width: 300px;height: 150px" >
+                                            <select name="coursesId" id="courseid" class="df-input-narrow" size="4"  style="width: 300px;">
+                                                <option value="" selected>=请选择=</option>
+                                            </select>
                                         </div>
                                     </div>
-
-                                    <br><br><br><br>
-                                    <%--选项--%>
-                                    <div class="row clearfix" style="margin:0px 0px 0px 65px">
-                                            <div class="col-md-10 column">
-                                                <div class="col-md-1 column">
-                                                    <span>选项</span>
-                                                </div>
-                                                <div class="col-md-6 column">
-                                                    <span>内容</span>
-                                                </div>
-                                                <div class="col-md-1 column">
-                                                    <span>正确答案</span>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-md-10 column" >
-                                                <div class="col-md-1 column">
-                                                    <span class="form-label"><span style="color: red">*</span>A.</span>
-                                                </div>
-                                                <div class="col-md-6 column" style="float: left">
-                                                    <textarea name="option_A" class="add-question-ta" style="width: 360px;height: 30px"></textarea>
-
-                                                </div>
-                                                <div class="col-md-1 column">
-                                                    <input name="correct" type="radio" value="A">
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-md-10 column">
-                                                <div class="col-md-1 column">
-                                                    <span class="form-label"><span style="color: red">*</span>B.</span>
-                                                </div>
-                                                <div class="col-md-6 column">
-                                                    <textarea name="option_B" class="add-question-ta" style="width: 360px;height: 30px"></textarea>
-                                                </div>
-                                                <div class="col-md-1 column">
-                                                    <input name="correct" type="radio" value="B">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-10 column">
-                                                <div class="col-md-1 column" >
-                                                    <span class="form-label"><span style="color: red">*</span>C.</span>
-                                                </div>
-                                                <div class="col-md-6 column">
-                                                    <textarea name="option_C" class="add-question-ta" style="width: 360px;height: 30px"></textarea>
-                                                </div>
-                                                <div class="col-md-1 column">
-                                                    <input name="correct" type="radio" value="C">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-10 column">
-                                                <div class="col-md-1 column">
-                                                    <span class="form-label"><span style="color: red">*</span>D.</span>
-                                                </div>
-                                                <div class="col-md-6 column">
-                                                    <textarea name="option_D" class="add-question-ta" style="width: 360px;height: 30px"></textarea>
-                                                </div>
-                                                <div class="col-md-1 column">
-                                                    <input name="correct" type="radio" value="D">
-                                                </div>
-                                            </div>
+                                    <div class="col-md-4 column" style="margin:0px 0px 0px 75px" >
+                                        <span style="float: left" ><span style="color: red">*</span>知识点：</span>
+                                        <div style="width: 300px;height: 150px">
+                                            <select name="tech_cate_id" id="techId" class="df-input-narrow" size="4"  style="width: 300px;">
+                                                <option value="" selected>=请选择=</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <br>
-                                    <input type="hidden" name="question_type" value="1">
-                                    <div style="margin: 0px 0px 0px 300px ;float: left">
-                                        <button type="submit" class="btn btn-primary" style="width: 80px">保存</button>
-                                        &nbsp;&nbsp;
-                                        <button type="reset" class="btn btn-default" style="width: 80px">重置</button>
+                                </div>
+                            </div>
+
+
+                            <%--选项--%>
+                            <div class="row clearfix" style="margin:0px 0px 0px 180px">
+                                <div class="col-md-10 column">
+                                    <div class="col-md-2 column">
+                                        <span>选项</span>
                                     </div>
-                                </form>
+                                    <div class="col-md-6 column">
+                                        <span>内容</span>
+                                    </div>
+                                    <div class="col-md-2 column">
+                                        <span>正确答案</span>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-10 column" >
+                                    <div class="col-md-2 column" >
+                                        <span class="form-label"><span style="color: red">*</span>A.</span>
+                                    </div>
+                                    <div class="col-md-6 column" style="float: left">
+                                        <textarea name="option_A" class="add-question-ta" style="width: 360px;height: 30px"></textarea>
+                                    </div>
+                                    <div class="col-md-2 column">
+                                        <input name="correct" type="checkbox" value="A">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-10 column">
+                                    <div class="col-md-2 column">
+                                        <span class="form-label"><span style="color: red">*</span>B.</span>
+                                    </div>
+                                    <div class="col-md-6 column">
+                                        <textarea name="option_B" class="add-question-ta" style="width: 360px;height: 30px"></textarea>
+                                    </div>
+                                    <div class="col-md-2 column">
+                                        <input name="correct" type="checkbox" value="B">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-10 column">
+                                    <div class="col-md-2 column" >
+                                        <span class="form-label"><span style="color: red">*</span>C.</span>
+                                    </div>
+                                    <div class="col-md-6 column">
+                                        <textarea name="option_C" class="add-question-ta" style="width: 360px;height: 30px"></textarea>
+                                    </div>
+                                    <div class="col-md-2 column">
+                                        <input name="correct" type="checkbox" value="C">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-10 column">
+                                    <div class="col-md-2 column">
+                                        <span class="form-label"><span style="color: red">*</span>D.</span>
+                                    </div>
+                                    <div class="col-md-6 column">
+                                        <textarea name="option_D" class="add-question-ta" style="width: 360px;height: 30px"></textarea>
+                                    </div>
+                                    <div class="col-md-2 column">
+                                        <input name="correct" type="checkbox" VALUE="D">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <input type="hidden" name="question_type" value="1">
+                            <div style="margin: 0px 0px 0px 400px ;float: left">
+                                <button type="submit" class="btn btn-primary" style="width: 80px">保存</button>
+                                &nbsp;&nbsp;
+                                <button type="reset" class="btn btn-default" style="width: 80px">重置</button>
+                            </div>
+                        </form>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>

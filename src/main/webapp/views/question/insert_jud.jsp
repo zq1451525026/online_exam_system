@@ -105,39 +105,42 @@
                         </div>
                     </div>
                     <!--主要修改页面 高度为自动  在美团后台里面扣自己想要的样式自己导入样式库-->
-                    <div class="ibox-content" style="text-align: center ;height: 500px;width:1079px;float: left"  >
+                    <div class="ibox-content" style="text-align: center ;height: 100%;width:100%;float: left"  >
+                        <div class="panel panel-primary" style="height: 100%">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-left"><span class="fa fa-bar-chart-o"></span> &nbsp;新增判断
+                                </h3>
+                            </div>
                         <form  action="question/insert2" method="post" id="jud_add">
-                            <div class="col-md-8 column"  style="margin:0px 0px 0px 65px">
+                            <div class="col-md-8 column"  style="margin:0px 0px 0px 180px;margin-top: 20px">
                                 <div class="row clearfix">
                                     <div class="col-md-4 column">
                                         <span style="float: left"><span style="color: red">*</span>课程：</span>
-                                        <div style="width: 300px;height: 150px" >
-                                            <select name="coursesId" id="courseid" class="df-input-narrow" size="4"  style="width: 300px;">
+                                        <div style="width: 300px;height: 200px" >
+                                            <select name="coursesId" id="courseid" class="df-input-narrow" size="5"  style="width: 300px;">
                                                 <option value="" selected>=请选择=</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 column" style="margin:0px 0px 0px 80px" >
+                                    <div class="col-md-4 column" style="margin:0px 0px 0px 75px" >
                                         <span style="float: left" ><span style="color: red">*</span>知识点：</span>
-                                        <div style="width: 300px;height: 150px">
-                                            <select name="tech_cate_id" id="techId" class="df-input-narrow" size="4"  style="width: 300px;">
+                                        <div style="width: 300px;height: 200px">
+                                            <select name="tech_cate_id" id="techId" class="df-input-narrow" size="5"  style="width: 300px;">
                                                 <option value="" selected>=请选择=</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <br><br><br><br>
                             <%--选项--%>
-                            <div class="row clearfix" style="margin:0px 0px 0px 55px">
+                            <div class="row clearfix" style="margin:0px 0px 0px 200px">
                                 <div class="col-md-10 column">
                                     <div class="col-md-6 column">
                                         <span>内容</span>
                                         <textarea  name="question" class="add-question-ta" style="width: 400px;height: 100px"></textarea>
                                     </div>
 
-                                    <div class="col-md-2 column" >
+                                    <div class="col-md-2 column" style="margin:0px 0px 0px 60px" >
                                         <span>正确答案</span><br>
                                         <input name="correct" type="radio" value="T">对<br>
                                         <input name="correct" type="radio" value="F">错<br>
@@ -146,7 +149,7 @@
                             </div>
                             <br>
                             <input type="hidden" name="question_type" value="3">
-                            <div style="margin: 0px 0px 0px 300px ;float: left">
+                            <div style="margin: 0px 0px 0px 400px ;float: left">
                                 <button type="submit" class="btn btn-primary" style="width: 80px">保存</button>
                                 &nbsp;&nbsp;
                                 <button type="reset" class="btn btn-default" style="width: 80px">重置</button>
@@ -157,6 +160,8 @@
             </div>
         </div>
         <!--结尾信息-->
+
+    </div>
         <div class="footer">
             <div class="pull-right" style="font-size: 12px">
                 蓝桥<strong>在线</strong> 考试系统
@@ -165,7 +170,6 @@
                 烧脑分队  倾情奉献 &copy; 2018-2019
             </div>
         </div>
-    </div>
 </div>
 </body>
 

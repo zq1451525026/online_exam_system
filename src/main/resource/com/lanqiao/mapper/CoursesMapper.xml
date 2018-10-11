@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanqiao.mapper.CoursesMapper">
+
+    <!--Courses表实体映射-->
+    <resultMap id="baseCourseResult" type="Courses">
+        <id property="id" column="ID"/>
+        <result property="course_name" column="COURSE_NAME"/>
+    </resultMap>
+
+    <!--插入Course实体-->
+    <insert id="insertCourse" parameterType="Courses">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            SELECT COURSE_SEQ.nextval FROM dual
+        </selectKey>
+            INSERT INTO COURSES VALUES (#{id},#{course_name})
+    </insert>
+
+    <!--删除-->
+    <delete id="deleteCourse" parameterType="int">
+        DELETE FROM COURSES WHERE ID=#{id}
+    </delete>
+
+    <!--查询所有Courses课程-->
+    <select id="selectAllCourses" resultMap="baseCourseResult" parameterType="Courses">
+        SELECT * FROM COURSES ORDER BY ID ASC
+    </select>
+
+    <!--通过ID查询Course-->
+    <select id="selectById" parameterType="int" resultType="Courses">
+        SELECT * FROM COURSES WHERE ID = #{id}
+    </select>
+
+    <select id="selectByName" parameterType="string" resultType="Courses">
+        SELECT * FROM COURSES WHERE COURSE_NAME = #{course_name}
+    </select>
+
+    <!--更新Courses类-->
+    <update id="updateCourse" parameterType="Courses">
+        UPDATE COURSES
+        <set>
+            <if test="course_name != null">COURSE_NAME=#{course_name},</if>
+        </set>
+        WHERE ID=#{id}
+    </update>
+
+
+
+</mapper>

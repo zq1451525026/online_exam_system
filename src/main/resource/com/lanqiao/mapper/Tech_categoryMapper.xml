@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanqiao.mapper.Tech_categoryMapper">
+<!--
+id integer not null primary key,
+     tech_ctgr varchar2(100) not null,
+     course_id references courses(id)
+     <association property="course_id" column="course_id" resultMap="com.lanqiao.mapper.CoursesMapper.baseCourseResult"/>
+-->
+    <!--Tech_category表实体映射-->
+    <resultMap id="baseKnowledgeResult" type="Tech_category">
+        <id property="id" column="ID"/>
+        <result property="tech_ctgr" column="TECH_CTGR"/>
+        <result property="course_id" column="COURSE_ID"/>
+    </resultMap>
+
+    <resultMap id="baseKnowledgeMap" type="Tech_category" extends="baseKnowledgeResult">
+        <association property="courses" javaType="Courses">
+            <id property="id" column="ID"/>
+            <result property="course_name" column="COURSE_NAME"/>
+        </association>
+    </resultMap>
+
+    <!--插入Tech_category实体-->
+    <insert id="insertKnowledge" parameterType="Tech_category">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            SELECT TECH_CATEGORY_SEQ.nextval FROM dual
+        </selectKey>
+            INSERT INTO TECH_CATEGORY VALUES (#{id},#{tech_ctgr},#{course_id})
+    </insert>
+
+    <!--删除-->
+    <delete id="deleteKnowledge" parameterType="int">
+        DELETE FROM TECH_CATEGORY WHERE ID=#{id}
+    </delete>
+
+    <!--查询所有知识点-->
+    <select id="selectAllKnowledge" resultMap="baseKnowledgeResult" parameterType="Tech_category" >
+        SELECT * FROM TECH_CATEGORY ORDER BY ID ASC
+    </select>
+
+    <select id="selectKnowledge" resultMap="baseKnowledgeMap" parameterType="Tech_category" >
+        SELECT t.*,
+            c.course_name
+        FROM TECH_CATEGORY t
+            INNER JOIN COURSES c
+                ON t.COURSE_ID = c.ID
+        <where>
+        <if test="techCategory !=null and techCategory.tech_ctgr != null">
+            <bind name="tech_ctgr" value="'%' + techCategory.tech_ctgr + '%'"/>
+            AND t.TECH_CTGR LIKE #{tech_ctgr}
+        </if>
+            <if test="techCategory != null and techCategory.course_id != null">
+                AND t.COURSE_ID=#{techCategory.course_id}
+            </if>
+            <if test="techCategory != null and techCategory.id != null">
+                AND t.ID=#{techCategory.id}
+            </if>
+    </where>
+    </select>
+
+    <!--通过ID查询Course-->
+    <select id="selectById" parameterType="int" resultMap="baseKnowledgeMap">
+        SELECT t.*,c.COURSE_NAME
+        FROM TECH_CATEGORY t, COURSES c
+        WHERE t.id = #{knowledge_id}
+              AND c.id = t.course_id
+    </select>
+    <select id="selectByTech_ctgr" resultType="Tech_category">
+        SELECT t.*
+        FROM TECH_CATEGORY t
+        WHERE t.TECH_CTGR = #{tech_ctgr}
+    </select>
+
+    <!--更新Tech_category类-->
+    <update id="updateKnowledge" parameterType="Tech_category">
+        UPDATE TECH_CATEGORY
+        <set>
+            <if test="tech_ctgr != null">TECH_CTGR=#{tech_ctgr},</if>
+            <if test="course_id != null">COURSE_ID=#{course_id},</if>
+        </set>
+        WHERE ID=#{id}
+    </update>
+
+
+
+</mapper>

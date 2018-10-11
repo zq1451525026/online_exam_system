@@ -30,7 +30,6 @@ create sequence olts_users_seq
 start with 1;
 
 --用户表
-select * from olts_users;
 create table olts_users(
   id integer not null primary key,
   stu_no char(18),					 --学号
@@ -149,44 +148,6 @@ create table smd_questions(
   --code_body  VARCHAR2(1000)
 )
 
-select * from OLTS_USERS;
-INSERT INTO EXAMINATION(exam_no,user_id,exam_date) VALUES('GS18100401',1,NULL );
-COMMIT;
-INSERT INTO smd_questions VALUES (smd_questions_seq,'下列解锁hr账户的命令正确的是（ ）','B',1,1,null,sysdate);
-INSERT INTO smd_options VALUES (sys_guid(),
-                                'A、update user hr account unlock;',
-                                'B、alter user hr account unlock;',
-                                'C、alter user hr unlock;',
-                                'D、update user hr unlock',NULL ,1);
-
-COMMIT;
-INSERT INTO fsp_questions VALUES (11,'.什么是视图？视图可以DML操作吗 ？','答案',5,5,sysdate,NULL);
-
-INSERT INTO smd_questions VALUES (2,'.下列SQL语句正确的是?（ ）','AB',2,2,null,sysdate);
-INSERT INTO smd_options VALUES (sys_guid(),
-                                'A、describle view_name;',
-                                'B、describle table_name;',
-                                'C、describle column_name;',
-                                'D、describle sequence_name;',NULL ,2);
-
-COMMIT;
-CREATE TABLE pd_options(
-  id VARCHAR2(32) NOT NULL PRIMARY KEY ,--uuid,系统函数生成：sys_guid()
-  option_T VARCHAR2(32),
-  option_F VARCHAR2(32),
-  question_id unique references smd_questions(id) --外键，判断题
-)
-
-INSERT INTO smd_questions VALUES (3,'.中国特色社会主义进入新时代，我国社会主要矛盾已经转化为人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾?','T',3,3,null,sysdate);
-INSERT INTO pd_options VALUES (sys_guid(),'正确','错误',3);
-
-INSERT INTO fsp_questions VALUES (12,'.编写一个函数用来实现输入任意字符串,实现对该字符串的反转,' ||
-                                     '并返回反转后的字符串(不要使用开发语言现有的反转方法).例如:输入:ABCD123 返回值为:321DCBA',
-                                  '答案',6,6,sysdate,NULL);
-
-
-
-
 --drop table smd_options;
 --单选题选项表
 create table smd_options(
@@ -265,7 +226,6 @@ create table olts_score(
   descrpt varchar(50), --说明信息
   user_id not null references olts_users(id), --学生ID
   exam_no not null references examination(exam_no) --考试编号
-
 )
 
 
