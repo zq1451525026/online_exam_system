@@ -26,6 +26,7 @@ public class Olts_users implements Serializable {
     private String marjor;                          //专业
     private String edu_Background;                  //最高学历
     private String graduate_School;                 //毕业院校
+    private Integer total;                           //考试总成绩
 
     public Olts_users() {
     }
@@ -40,6 +41,18 @@ public class Olts_users implements Serializable {
         this.id_card_no = id_card_no;
         this.user_name = user_name;
         this.pass_word = pass_word;
+    }
+
+    /**此构造用于（学生）用户管理 （学生表的导入导出）_王良*/
+    public Olts_users(String stu_no, String user_name, String id_card_no, String edu_Background, String marjor, String mobile, String qq, String nation_place) {
+        this.stu_no = stu_no;
+        this.user_name = user_name;
+        this.id_card_no = id_card_no;
+        this.edu_Background = edu_Background;
+        this.marjor = marjor;
+        this.mobile = mobile;
+        this.qq = qq;
+        this.nation_place = nation_place;
     }
 
     public Olts_users(String id, String stu_no, String id_card_no, String user_name,
@@ -211,6 +224,14 @@ public class Olts_users implements Serializable {
         this.graduate_School = graduate_School;
     }
 
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
+
     @Override
     public String toString() {
         return "Olts_users{" +
@@ -232,6 +253,7 @@ public class Olts_users implements Serializable {
                 ", marjor='" + marjor + '\'' +
                 ", edu_Background='" + edu_Background + '\'' +
                 ", graduate_School='" + graduate_School + '\'' +
+                ", total=" + total +
                 '}';
     }
 }

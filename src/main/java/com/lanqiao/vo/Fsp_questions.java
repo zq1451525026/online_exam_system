@@ -1,19 +1,12 @@
 package com.lanqiao.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created by Administrator on 2018/10/7.
+ * Created by 张垚 on 2018/10/6 0006.
  */
-public class Fsp_questions {
-   /* id integer not null primary key,  	--主键
-    question varchar2(3000) not null,  --题干
-    std_answer clob, 	--标准答案
-    question_type integer not null check(question_type in(4,5,6)), --考题类型：4.填空  5.简答   6.编程题
-     tech_cate_id references tech_category(id),--考题知识点分类
-    pubdate date default sysdate, 	--出题时间
-    descrpt varchar(500)  			--考题说明信息*/
-
+public class Fsp_questions implements Serializable{
     private Integer id;
     private String question;
     private String std_answer;
@@ -96,7 +89,7 @@ public class Fsp_questions {
         return "Fsp_questions{" +
                 "id=" + id +
                 ", question='" + question + '\'' +
-                ", std_answer=" + std_answer +
+                ", std_answer='" + std_answer + '\'' +
                 ", question_type=" + question_type +
                 ", tech_cate_id=" + tech_cate_id +
                 ", pubdate=" + pubdate +

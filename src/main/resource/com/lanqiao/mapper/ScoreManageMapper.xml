@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanqiao.mapper.ScoreManageMapper">
+<resultMap id="totalBaseScore" type="Olts_score">
+    <id property="id" column="ID"/>
+    <result property="allScore" column="COUNT1"/>
+    <result property="lvl" column="LVL"/>
+</resultMap>
+
+    <select id="totalScore" resultMap="totalBaseScore" parameterType="String">
+        SELECT count(*) COUNT1,'E' LVL
+        FROM OLTS_SCORE s
+        WHERE (SCORE+FSP_SCORE)<![CDATA[<72]]> AND EXAM_NO=#{id}
+        UNION
+        SELECT count(*),'D'LVL
+        FROM OLTS_SCORE s
+        WHERE (SCORE+FSP_SCORE) BETWEEN 72 and 90 AND EXAM_NO=#{id}
+        UNION
+        SELECT count(*),'C'LVL
+        FROM OLTS_SCORE s
+        WHERE (SCORE+FSP_SCORE) BETWEEN 91 and 100 AND EXAM_NO=#{id}
+        UNION
+        SELECT count(*),'B'LVL
+        FROM OLTS_SCORE s
+        WHERE (SCORE+FSP_SCORE) BETWEEN 101 and 110 AND EXAM_NO=#{id}
+        UNION
+        SELECT count(*),'A'LVL
+        FROM OLTS_SCORE s
+        WHERE (SCORE+FSP_SCORE) BETWEEN 111 and 120 AND EXAM_NO=#{id}
+        order by LVL
+    </select>
+
+    <select id="selectExamNo" resultType="Examination">
+        SELECT EXAM_NO FROM EXAMINATION
+    </select>
+
+</mapper>

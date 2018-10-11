@@ -39,6 +39,12 @@
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
     </bean>
 
-
-
+    <!-- 处理文件上传 （王良）-->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"/> <!-- 默认编码 (ISO-8859-1) -->
+        <property name="maxInMemorySize" value="10240"/> <!-- 最大内存大小 (10240)-->
+        <property name="uploadTempDir" value="/upload"/> <!-- 上传后的目录名 (WebUtils#TEMP_DIR_CONTEXT_ATTRIBUTE) -->
+        <property name="maxUploadSize" value="-1"/> <!-- 最大文件大小，-1为无限止(-1)   若为10M（10*1024*1024）-->
+    </bean>
 </beans>

@@ -84,6 +84,24 @@
             <%--此处包含头部信息--%>
             <%@include file="../../main_top.jsp"%>
         </div>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>导航</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="../../welcome.jsp">首页</a>
+                    </li>
+                    <li>
+                        <a>试题新增</a>
+                    </li>
+                    <li class="active">
+                        <strong>新增单选题</strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-2" id="h5">
+            </div>
+        </div>
         <!--头部导航窗口自定义对应每个界面 如 首页/商品管理/员工详细/自己给超链接-->
         <div class="row wrapper wrapper-content animated fadeInRight">
             <div class="col-lg-12">
