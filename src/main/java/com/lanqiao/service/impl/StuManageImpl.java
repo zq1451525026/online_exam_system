@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * Created by 王良 on 2018/10/4 on ${Time}.
  */
-@Service("stuManage")
+@Service("stuManageService")
 public class StuManageImpl implements IStuManageService {
 
     @Resource

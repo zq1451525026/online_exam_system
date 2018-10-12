@@ -22,4 +22,21 @@ public interface ITech_categoryService {
     List<Tech_category> selectKnowledge(Tech_category techCategory, int pageNum, int pageSize);
 
     Tech_category selectByTech_ctgr(String tech_ctgr);
+
+    /**
+     * 查询某一课程的知识点
+     * @param courseId
+     * @return
+     */
+
+    List<Tech_category> selectAllCategory(Integer courseId);
+    /**
+     * 根据ID查询知识点
+     * @param courseId
+     * @return
+     */
+    public List<Tech_category> selectCategoryById(Integer courseId);
+
+
+
 }

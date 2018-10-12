@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.lanqiao.mapper.CoursesMapper;
 import com.lanqiao.service.ICoursesService;
 import com.lanqiao.vo.Courses;
+import com.lanqiao.vo.Tech_category;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,7 +13,7 @@ import java.util.List;
 /**
  * Created by Nymph on 2018/10/4 15:21
  */
-@Service("categoryService")
+@Service("coursesService")
 public class CoursesServiceImpl implements ICoursesService {
 
     @Resource
@@ -47,5 +48,17 @@ public class CoursesServiceImpl implements ICoursesService {
     @Override
     public int deleteCourse(Integer id) {
         return coursesMapper.deleteCourse(id);
+    }
+
+    /*查询*/
+    @Override
+    public List<Courses> selectCourses()
+    {
+        return coursesMapper.selectCourses();
+    }
+
+    @Override
+    public List<Tech_category> coursesContactCategory(Integer knowledgeId) {
+        return coursesMapper.coursesContactCategory(knowledgeId).getTechCategoryList();
     }
 }

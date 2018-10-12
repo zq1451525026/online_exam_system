@@ -16,41 +16,51 @@ import java.util.List;
 public class Tech_categoryServiceImpl implements ITech_categoryService {
 
     @Resource
-    Tech_categoryMapper techCategoryMapper;
+    Tech_categoryMapper tech_CategoryMapper;
 
     @Override
     public List<Tech_category> selectAllKnowledge(Tech_category techCategory, int pageNum, int pageSize) {
             PageHelper.startPage(pageNum, pageSize);
-        return techCategoryMapper.selectAllKnowledge(techCategory, pageNum, pageSize);
+        return tech_CategoryMapper.selectAllKnowledge(techCategory, pageNum, pageSize);
     }
 
     @Override
     public int insertKnowledge(Tech_category techCategory) {
-        return techCategoryMapper.insertKnowledge(techCategory);
+        return tech_CategoryMapper.insertKnowledge(techCategory);
     }
 
     @Override
     public int updateKnowledge(Tech_category techCategory) {
-        return techCategoryMapper.updateKnowledge(techCategory);
+        return tech_CategoryMapper.updateKnowledge(techCategory);
     }
 
     @Override
     public Tech_category selectById(Integer id) {
-        return techCategoryMapper.selectById(id);
+        return tech_CategoryMapper.selectById(id);
     }
 
     @Override
     public int deleteKnowledge(Integer id) {
-        return techCategoryMapper.deleteKnowledge(id);
+        return tech_CategoryMapper.deleteKnowledge(id);
     }
 
     @Override
     public List<Tech_category> selectKnowledge(Tech_category techCategory, int pageNum, int pageSize) {
-        return techCategoryMapper.selectKnowledge(techCategory,pageNum,pageSize);
+        return tech_CategoryMapper.selectKnowledge(techCategory,pageNum,pageSize);
     }
 
     @Override
     public Tech_category selectByTech_ctgr(String tech_ctgr) {
-        return techCategoryMapper.selectByTech_ctgr(tech_ctgr);
+        return tech_CategoryMapper.selectByTech_ctgr(tech_ctgr);
+    }
+
+    @Override
+    public List<Tech_category> selectAllCategory(Integer courseId) {
+        return tech_CategoryMapper.selectAllCategory(courseId);
+    }
+
+    @Override
+    public List<Tech_category> selectCategoryById(Integer courseId) {
+        return tech_CategoryMapper.selectCategoryById(courseId);
     }
 }

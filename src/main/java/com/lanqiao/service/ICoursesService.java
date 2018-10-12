@@ -1,6 +1,7 @@
 package com.lanqiao.service;
 
 import com.lanqiao.vo.Courses;
+import com.lanqiao.vo.Tech_category;
 
 import java.util.List;
 
@@ -25,5 +26,9 @@ public interface ICoursesService {
     public Courses selectByName(String course_name);
 
     public int deleteCourse(Integer id);
+
+    public List<Courses> selectCourses();
+
+    public List<Tech_category> coursesContactCategory(Integer knowledgeId);
 
 }

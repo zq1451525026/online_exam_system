@@ -29,4 +29,8 @@ public interface Tech_categoryMapper {
     public int deleteKnowledge(Integer id);
 
     Tech_category selectByTech_ctgr(String tech_ctgr);
+
+    public List<Tech_category> selectAllCategory(Integer courseId);
+
+    public List<Tech_category> selectCategoryById(Integer courseId);
 }

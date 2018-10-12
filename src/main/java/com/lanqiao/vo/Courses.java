@@ -1,17 +1,14 @@
 package com.lanqiao.vo;
 
-import java.io.Serializable;
-/**
- * Created by Administrator on 2018/10/4.
- */
-public class Courses implements Serializable {
-   /* create table Courses(
-            id integer not null primary key,
-            course_name varchar2(20) not null
-            )*/
+import java.util.List;
 
+/**
+ * Created by XWPC on 2018/10/6.
+ */
+public class Courses {
     private Integer id;
     private String course_name;
+    private List<Tech_category> techCategoryList;
 
     public Courses() {
     }
@@ -37,11 +34,20 @@ public class Courses implements Serializable {
         this.course_name = course_name;
     }
 
+    public List<Tech_category> getTechCategoryList() {
+        return techCategoryList;
+    }
+
+    public void setTechCategoryList(List<Tech_category> techCategoryList) {
+        this.techCategoryList = techCategoryList;
+    }
+
     @Override
     public String toString() {
         return "Courses{" +
                 "id=" + id +
                 ", course_name='" + course_name + '\'' +
+                ", techCategoryList=" + techCategoryList +
                 '}';
     }
 }

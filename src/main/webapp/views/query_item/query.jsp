@@ -203,11 +203,9 @@
   <div class="modal-dialog modal-md">
     <div style="margin-top: 200px" class="modal-content" id="myModal-content2">
       <!--信息表单的内容部分，加入到这里 -->
-
     </div>
   </div>
 </div>
-
 
 <script>
     function  todelete(c) {

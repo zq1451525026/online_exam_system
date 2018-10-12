@@ -37,7 +37,10 @@ public class Smd_questions {
 
     public Smd_questions() {
     }
-
+    public Smd_questions(Integer id,String question) {
+        this.question = question;
+        this.id=id;
+    }
     public Smd_questions(Integer id, String question, String correct, Integer question_type, Integer tech_cate_id, String descrpt, Date pubdate) {
         this.id = id;
         this.question = question;

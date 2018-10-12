@@ -45,16 +45,14 @@
                 </ul>
             </li>
             <!--试题查询-->
-            <li id="2" style="display: ${logUser.user_type eq 1 ? '':'none'}"
-                class="${param.id eq 2 ? 'active':''}">
-                <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">试题查询</span> <span
-                        class="fa arrow"></span></a>
+            <li id="2" class="${param.id eq 2 ? 'active':''}">
+                <a href=""><i class="fa fa-th-large"></i> <span class="nav-label">试题查询</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="xxxx?id=2">单选题查询</a></li>
-                    <li><a href="xxxx?id=2">多选题查询</a></li>
-                    <li><a href="xxxx?id=2">判断题查询</a></li>
-                    <li><a href="xxxx?id=2">简答题查询</a></li>
-                    <li><a href="xxxx?id=2">编程题查询</a></li>
+                    <li><a href="courses/selectAllCourses?id=2" >单选题查询</a></li>
+                    <li><a href="views/query_item/mul_list.jsp?id=2">多选题查询</a></li>
+                    <li><a href="views/query_item/tf_list.jsp?id=2">判断题查询</a></li>
+                    <li><a href="views/query_item/simple_list.jsp?id=2">简答题查询</a></li>
+                    <li><a href="views/query_item/pro_list.jsp?id=2">编程题查询</a></li>
                 </ul>
             </li>
             <!--用户管理-->

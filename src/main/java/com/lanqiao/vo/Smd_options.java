@@ -1,9 +1,21 @@
 package com.lanqiao.vo;
 
+import java.io.Serializable;
+
 /**
- * Created by Administrator on 2018/10/6.
+ * Created by Administrator on 2018/10/5.
  */
-public class Smd_options {
+public class Smd_options implements Serializable {
+    /*
+    create table smd_options(
+    id varchar2(32) not null primary key, --uuid,系统函数生成：sys_guid()
+    option_A varchar(200) not null,
+    option_B varchar(200) not null,
+    option_C varchar(200) not null,
+    option_D varchar(200) not null,
+    option_E varchar(200),
+    question_id unique references smd_questions(id) --外键，单选题,多选题
+)*/
     private String id;
     private String option_A;
     private String option_B;
@@ -12,7 +24,25 @@ public class Smd_options {
     private String option_E;
     private Integer question_id;
 
-    public Smd_options() {
+    private Smd_questions smd_questions;
+
+    public Smd_options(String id, String option_A, String option_B, String option_C, String option_D, Integer question_id, Smd_questions smd_questions) {
+        this.id = id;
+        this.option_A = option_A;
+        this.option_B = option_B;
+        this.option_C = option_C;
+        this.option_D = option_D;
+        this.question_id = question_id;
+        this.smd_questions = smd_questions;
+    }
+
+    public Smd_options(String id, String option_A, String option_B, String option_C, String option_D, Integer question_id) {
+        this.id = id;
+        this.option_A = option_A;
+        this.option_B = option_B;
+        this.option_C = option_C;
+        this.option_D = option_D;
+        this.question_id = question_id;
     }
 
     public Smd_options(String id, String option_A, String option_B, String option_C, String option_D, String option_E, Integer question_id) {
@@ -23,6 +53,29 @@ public class Smd_options {
         this.option_D = option_D;
         this.option_E = option_E;
         this.question_id = question_id;
+    }
+
+    public Smd_options(String id, String option_A, String option_B, String option_C, String option_D, String option_E, Integer question_id, Smd_questions smd_questions) {
+        this.id = id;
+        this.option_A = option_A;
+        this.option_B = option_B;
+        this.option_C = option_C;
+        this.option_D = option_D;
+        this.option_E = option_E;
+        this.question_id = question_id;
+        this.smd_questions = smd_questions;
+    }
+
+
+    public Smd_questions getSmd_questions() {
+        return smd_questions;
+    }
+
+    public void setSmd_questions(Smd_questions smd_questions) {
+        this.smd_questions = smd_questions;
+    }
+
+    public Smd_options() {
     }
 
     public String getId() {
@@ -81,6 +134,7 @@ public class Smd_options {
         this.question_id = question_id;
     }
 
+
     @Override
     public String toString() {
         return "Smd_options{" +
@@ -91,6 +145,7 @@ public class Smd_options {
                 ", option_D='" + option_D + '\'' +
                 ", option_E='" + option_E + '\'' +
                 ", question_id=" + question_id +
+                ", smd_questions=" + smd_questions +
                 '}';
     }
 }

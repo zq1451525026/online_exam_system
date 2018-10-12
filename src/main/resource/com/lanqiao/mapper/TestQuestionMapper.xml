@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanqiao.mapper.TestQuestionMapper">
+    <resultMap id="baseUserResult" type="Smd_questions">
+        <id property="id" column="ID"/>
+        <result property="question" column="QUESTION"/>
+    </resultMap>
+
+    <resultMap id="optionResult" type="Smd_options">
+        <id property="id" column="ID"/>
+        <result property="option_A" column="OPTION_A"/>
+        <result property="option_B" column="OPTION_B"/>
+        <result property="option_C" column="OPTION_C"/>
+        <result property="option_D" column="OPTION_D"/>
+        <result property="option_E" column="OPTION_E"/>
+        <result property="question_id" column="QUESTION_ID"/>
+    </resultMap>
+
+    <resultMap id="queContactOptResult" type="Smd_options">
+        <id property="id" column="ID"/>
+        <result property="option_A" column="OPTION_A"/>
+        <result property="option_B" column="OPTION_B"/>
+        <result property="option_C" column="OPTION_C"/>
+        <result property="option_D" column="OPTION_D"/>
+        <result property="option_E" column="OPTION_E"/>
+        <result property="question_id" column="QUESTION_ID"/>
+
+        <association property="smd_questions" javaType="Smd_questions">
+            <id property="id" column="ID"/>
+            <result property="question" column="QUESTION"/>
+            <result property="correct" column="CORRECT"/>
+            <result property="question_type" column="QUESTION_TYPE"/>
+            <result property="tech_cate_id" column="TECH_CATE_ID"/>
+            <result property="descrpt" column="DESCRPT"/>
+            <result property="pubdate" column="PUBDATE"/>
+        </association>
+    </resultMap>
+
+
+    <update id="updateSmd_Option" parameterType="Smd_options">
+        UPDATE Smd_options
+        <set>
+            <if test="option_A != null">OPTION_A=#{option_A},</if>
+            <if test="option_B != null">OPTION_B=#{option_B},</if>
+            <if test="option_C != null">OPTION_C=#{option_C},</if>
+            <if test="option_D != null">OPTION_D=#{option_D},</if>
+            <if test="option_E != null">OPTION_E=#{option_E},</if>
+        </set>
+        WHERE QUESTION_ID=#{question_id}
+    </update>
+<!--更新题干-->
+    <update id="updateSmd_Question" parameterType="Smd_questions">
+        UPDATE SMD_QUESTIONS
+        <set>
+            <if test="question != null">QUESTION=#{question},</if>
+        </set>
+        WHERE ID=#{id}
+    </update>
+
+    <delete id="deleteSmd_Question" parameterType="Smd_questions">
+        DELETE FROM SMD_QUESTIONS WHERE ID=#{id}
+    </delete>
+
+    <delete id="deleteSmd_Option" parameterType="Smd_options">
+        DELETE FROM SMD_OPTIONS WHERE QUESTION_ID=#{question_id}
+    </delete>
+
+    <!--单选题，多选题 语句查询-->
+    <select id="selectTestQuestion" resultMap="queContactOptResult" parameterType="Smd_questions">
+        SELECT
+        q.correct,
+        q.question,
+        o.option_A,
+        o.option_B,
+        o.option_C,
+        o.option_D,
+        o.QUESTION_ID
+        from SMD_OPTIONS o
+        inner join SMD_QUESTIONS q
+        on o.QUESTION_ID=q.ID
+        <where>
+            <if test="smd_questions != null and smd_questions.question != null">
+                <bind name="likequestion" value="'%'+smd_questions.question+'%'"/>
+                and q.question like #{likequestion}
+            </if>
+            <if test="smd_questions != null and smd_questions.question_type != null">
+                and q.question_type=#{smd_questions.question_type}
+            </if>
+        </where>
+    </select>
+
+    <!--编程，解答题-->
+
+    <select id="selectFspTestQuestion" parameterType="Fsp_questions" resultType="com.lanqiao.vo.Fsp_questions">
+        SELECT id,QUESTION,STD_ANSWER,tech_cate_id
+        from FSP_QUESTIONS
+        <where>
+            <if test="fsp_questions != null and fsp_questions.question != null">
+                <bind name="likequestion" value="'%'+fsp_questions.question+'%'"/>
+                and question like #{likequestion}
+            </if>
+            <if test="fsp_questions != null and fsp_questions.question_type != null">
+                and question_type=#{fsp_questions.question_type}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateSmd_Question2" parameterType="Fsp_questions">
+        UPDATE FSP_QUESTIONS
+        <set>
+            <if test="question != null">QUESTION=#{question},
+                CORRECT=#{correct}</if>
+        </set>
+        WHERE ID=#{id}
+    </update>
+
+    <!--判断-->
+    <select id="selectTf" parameterType="Smd_questions" resultType="com.lanqiao.vo.Smd_questions">
+        SELECT id,CORRECT,QUESTION
+        from SMD_QUESTIONS
+        <where>
+            <if test="smd_questions != null and smd_questions.question != null">
+                <bind name="likequestion" value="'%'+smd_questions.question+'%'"/>
+                and question like #{likequestion}
+            </if>
+            <if test="smd_questions != null and smd_questions.question_type != null">
+                and question_type=#{smd_questions.question_type}
+            </if>
+        </where>
+    </select>
+    <update id="updateSmd_Question1" parameterType="Smd_questions">
+        UPDATE SMD_QUESTIONS
+        <set>
+            <if test="question != null">QUESTION=#{question},
+                CORRECT=#{correct}</if>
+        </set>
+        WHERE ID=#{id}
+    </update>
+
+    <!-- <select id="contactquestion" resultMap="baseUserResult" resultType="com.lanqiao.vo.Smd_questions">
+         SELECT s.*,
+         t.ID           t_id,
+         t.TECH_CTGR    t_tech_ctgr,
+         t.COURSE_ID    t_course_id
+         FROM SMD_QUESTIONS s
+         INNER JOIN TECH_CATEGORY t
+         ON s.TECH_CATE_ID=t.COURSE_ID
+         WHERE COURSE_ID = #{id}
+     </select>-->
+
+    <select id="selectOptionByQuestionId" parameterType="integer" resultMap="queContactOptResult">
+        select q.ID,
+              q.QUESTION,
+              q.CORRECT,
+              o.option_A,
+              o.option_B,
+              o.option_C,
+              o.option_D
+            from SMD_OPTIONS o
+              inner join SMD_QUESTIONS q
+                on o.QUESTION_ID=q.ID
+            WHERE QUESTION_ID = #{question_id}
+    </select>
+
+
+    <select id="selectAllExamination" resultType="examination">
+        SELECT * FROM EXAMINATION
+    </select>
+
+    <!--增加单选题到试卷-->
+    <update id="updatetExam">
+        <bind name="newExamid" value="','+examid"/>
+        UPDATE EXAMINATION
+        SET SINGLE_ID = (CASE WHEN SINGLE_ID IS NULL
+        THEN '1'
+        ELSE concat((SELECT SINGLE_ID
+        FROM EXAMINATION
+        WHERE EXAM_NO = #{examno}),#{newExamid}) END)
+        WHERE EXAM_NO =#{examno}
+    </update>
+    <!--新增判断题-->
+    <update id="updateTrueFalse">
+        <bind name="newExamid" value="','+examid"/>
+        UPDATE EXAMINATION
+        SET TRUE_FALSE_ID = (CASE WHEN TRUE_FALSE_ID IS NULL
+        THEN #{examid}
+        ELSE concat((SELECT TRUE_FALSE_ID
+        FROM EXAMINATION
+        WHERE EXAM_NO = #{examno}),#{newExamid}) END)
+        WHERE EXAM_NO =#{examno}
+    </update>
+
+    <!--新增多选题-->
+    <update id="updateMultiple">
+        <bind name="newExamid" value="','+examid"/>
+        UPDATE EXAMINATION
+        SET MULTIPLE_ID = (CASE WHEN MULTIPLE_ID IS NULL
+        THEN #{examid}
+        ELSE concat((SELECT MULTIPLE_ID
+        FROM EXAMINATION
+        WHERE EXAM_NO = #{examno}),#{newExamid}) END)
+        WHERE EXAM_NO =#{examno}
+    </update>
+
+    <!--新增简答题-->
+    <update id="updateSimpleAnswer">
+        <bind name="newExamid" value="','+examid"/>
+        UPDATE EXAMINATION
+        SET SIMPLE_ANWSER_ID = (CASE WHEN SIMPLE_ANWSER_ID IS NULL
+        THEN #{examid}
+        ELSE concat((SELECT SIMPLE_ANWSER_ID
+        FROM EXAMINATION
+        WHERE EXAM_NO = #{examno}),#{newExamid}) END)
+        WHERE EXAM_NO =#{examno}
+    </update>
+
+    <!--新增填空题题-->
+    <update id="updateFillInGaps">
+        <bind name="newExamid" value="','+examid"/>
+        UPDATE EXAMINATION
+        SET FILL_IN_GAPS_ID = (CASE WHEN FILL_IN_GAPS_ID IS NULL
+        THEN #{examid}
+        ELSE concat((SELECT FILL_IN_GAPS_ID
+        FROM EXAMINATION
+        WHERE EXAM_NO = #{examno}),#{newExamid}) END)
+        WHERE EXAM_NO =#{examno}
+    </update>
+
+    <!--新增编程题题-->
+    <update id="updateProgram">
+        <bind name="newExamid" value="','+examid"/>
+        UPDATE EXAMINATION
+        SET PROGRAM_ID = (CASE WHEN PROGRAM_ID IS NULL
+        THEN #{examid}
+        ELSE concat((SELECT PROGRAM_ID
+        FROM EXAMINATION
+        WHERE EXAM_NO = #{examno}),#{newExamid}) END)
+        WHERE EXAM_NO =#{examno}
+    </update>
+
+
+</mapper>
+

@@ -46,6 +46,29 @@
         WHERE ID=#{id}
     </update>
 
+    <!--查询-->
+    <resultMap id="contactCourseCategory" type="Courses" extends="baseCourseResult">
+        <collection property="techCategoryList" ofType="Tech_category" columnPrefix="t_">
+            <id property="id" column="ID"/>
+            <result property="tech_ctgr" column="TECH_CTGR"/>
+            <result property="course_id" column="COURSE_ID"/>
+        </collection>
+    </resultMap>
 
+    <!--课程表与知识点的关联查询-->
+    <select id="coursesContactCategory" resultMap="contactCourseCategory" parameterType="int">
+        SELECT c.*,
+        t.ID           t_id,
+        t.TECH_CTGR    t_tech_ctgr,
+        t.COURSE_ID    t_course_id
+        FROM COURSES c
+        INNER JOIN TECH_CATEGORY t
+        ON c.ID=t.COURSE_ID
+        WHERE COURSE_ID = #{id}
+    </select>
+
+    <select id="selectCourses" resultMap="baseCourseResult">
+        SELECT * FROM COURSES ORDER BY ID ASC
+    </select>
 
 </mapper>

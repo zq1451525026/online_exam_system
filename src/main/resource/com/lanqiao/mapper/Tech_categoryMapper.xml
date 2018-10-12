@@ -3,12 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanqiao.mapper.Tech_categoryMapper">
-<!--
-id integer not null primary key,
-     tech_ctgr varchar2(100) not null,
-     course_id references courses(id)
-     <association property="course_id" column="course_id" resultMap="com.lanqiao.mapper.CoursesMapper.baseCourseResult"/>
--->
     <!--Tech_category表实体映射-->
     <resultMap id="baseKnowledgeResult" type="Tech_category">
         <id property="id" column="ID"/>
@@ -68,6 +62,7 @@ id integer not null primary key,
         WHERE t.id = #{knowledge_id}
               AND c.id = t.course_id
     </select>
+
     <select id="selectByTech_ctgr" resultType="Tech_category">
         SELECT t.*
         FROM TECH_CATEGORY t
@@ -84,6 +79,16 @@ id integer not null primary key,
         WHERE ID=#{id}
     </update>
 
+    <!--查询-->
+    <select id="selectAllCategory" resultMap="baseKnowledgeResult" parameterType="integer"
+            flushCache="false" useCache="true">
+        select * from tech_category where COURSE_ID = #{courseId}
+    </select>
 
+    <select id="selectCategoryById" resultMap="baseKnowledgeResult" parameterType="integer"
+            flushCache="false" useCache="true">
+        select * from tech_category where COURSE_ID = #{id}
+        and TECH_CATE_ID = #{id}
+    </select>
 
 </mapper>

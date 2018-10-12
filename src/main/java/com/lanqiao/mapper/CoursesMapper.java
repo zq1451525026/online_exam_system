@@ -25,4 +25,9 @@ public interface CoursesMapper {
     public int deleteCourse(Integer id);
 
     Courses selectByName(String course_name);
+
+    /*查询*/
+    public List<Courses> selectCourses();
+
+    public Courses coursesContactCategory(Integer knowledgeId);
 }

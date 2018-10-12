@@ -48,7 +48,7 @@ public class KnowledgeTest {
         Tech_category techCategory = techCategoryService.selectById(44);
         System.out.println(techCategory);
     }
-    /*有错*/
+
     @Test
     public void testUpdateKnowledge(){
         int techCategory = techCategoryService.updateKnowledge(new Tech_category(1,"数据类型",62));
